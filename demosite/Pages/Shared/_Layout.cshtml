@@ -28,25 +28,30 @@
                 </button>
                 <a asp-page="/Facilities/Index" class="navbar-brand">FMdemosite</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                <ul class="nav navbar-nav">
-                    <li><a asp-page="/Index">Home</a></li>
-                    <li><a asp-page="/About">About</a></li>
-                    <li><a asp-page="/Contact">Contact</a></li>
-                </ul>
-            </div>
+            <!--
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                        <ul class="nav navbar-nav">
+                            <li><a asp-page="/Index">Home</a></li>
+                            <li><a asp-page="/About">About</a></li>
+                            <li><a asp-page="/Contact">Contact</a></li>
+                        </ul>
+                    </div>
+            -->
         </div>
+
     </nav>
 
-    <partial name="_CookieConsentPartial" />
+    <!--<partial name="_CookieConsentPartial" />-->
 
     <div class="container body-content">
         @RenderBody()
+        <!--
         <hr />
         <footer>
             <p>&copy; 2018 - demosite</p>
         </footer>
+        -->
     </div>
 
     <environment include="Development">

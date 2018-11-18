@@ -19,7 +19,7 @@ namespace demosite.Pages.Facilities
             _context = context;
         }
 
-        public IList<Facility> Facility { get;set; }
+        public IList<Models.Facility> Facility { get;set; }
         public string SearchString { get; set; }
         public int Room { get; set; }
         public string FacilityRoom { get; set; }
