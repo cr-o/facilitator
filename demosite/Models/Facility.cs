@@ -12,9 +12,9 @@ namespace demosite.Models
         [RegularExpression(@"^[a-zA-Z ]+$")]
         [Required]
  
-        public string FName { get; set; }
-        public string LName { get; set; }
-        public string UserName { get; set; }
-        public string Pwd { get; set; }
+        public string People { get; set; }
+        public string Buildings { get; set; }
+        public string Floors { get; set; }
+        public string Rooms { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace demosite.Pages.Facilities
         }
 
         [BindProperty]
-        public Facilities Facility { get; set; }
+        public Facility Facility { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {

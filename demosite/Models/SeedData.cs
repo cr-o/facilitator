@@ -21,9 +21,9 @@ namespace demosite.Models
                 context.Facility.AddRange(
                     new Facility
                     {
-                        FName = "Jay",
-                        LName = "Main",
-                        UserName = "4",
+                        People = "Jay",
+                        Buildings = "Main",
+                        Floors = "4",
                         Rooms = "7"
                     },
 

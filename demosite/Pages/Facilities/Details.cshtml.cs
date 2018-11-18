@@ -18,7 +18,7 @@ namespace demosite.Pages.Facilities
             _context = context;
         }
 
-        public Facilities Facility { get; set; }
+        public Facility Facility { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
