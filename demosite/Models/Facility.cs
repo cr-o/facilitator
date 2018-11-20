@@ -16,5 +16,7 @@ namespace demosite.Models
         public string Buildings { get; set; }
         public string Floors { get; set; }
         public string Rooms { get; set; }
+        //all these will be icollections
+        //public ICollection<PersonsBuilding> PersonsBuildings { get; set; } //many to many
     }
 }
