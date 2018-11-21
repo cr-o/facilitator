@@ -12,9 +12,13 @@ namespace demosite.Models
             : base(options)
         {
         }
+        
         public DbSet<demosite.Models.Facility> Facility { get; set; }
         public DbSet<demosite.Models.Person> Person { get; set; }
         public DbSet<demosite.Models.Building> Building { get; set; }
+        public DbSet<demosite.Models.Floor> Floor { get; set; }
+        public DbSet<demosite.Models.Room> Room { get; set; }
+        // public DbSet<demosite.Models.PersonsBuilding> PersonsBuilding { get; set; }
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<PersonsBuilding>()
@@ -29,9 +33,18 @@ namespace demosite.Models
                 .HasOne(pb => pb.Building)
                 .WithMany(b => b.PersonsBuildings)
                 .HasForeignKey(pb => pb.BuildingID);
+
+            modelbuilder.Entity<Floor>()
+                .HasOne(f => f.Building)
+                .WithMany(b => b.Floors)
+                .IsRequired();
+
+            modelbuilder.Entity<Room>()
+                .HasOne(r => r.Floor)
+                .WithMany(f => f.Rooms)
+                .IsRequired();
         }
-        
-        //public DbSet<demosite.Models.PersonsBuilding> PersonsBuilding { get; set; }
+
 
     }
 }
