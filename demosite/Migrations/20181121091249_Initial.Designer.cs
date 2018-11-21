@@ -9,8 +9,8 @@ using demosite.Models;
 namespace demosite.Migrations
 {
     [DbContext(typeof(demositeContext))]
-    [Migration("20181121005443_Alltables")]
-    partial class Alltables
+    [Migration("20181121091249_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
