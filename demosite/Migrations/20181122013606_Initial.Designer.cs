@@ -9,7 +9,7 @@ using demosite.Models;
 namespace demosite.Migrations
 {
     [DbContext(typeof(demositeContext))]
-    [Migration("20181121091249_Initial")]
+    [Migration("20181122013606_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
