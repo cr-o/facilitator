@@ -1,0 +1,89 @@
+﻿@page "{id:int?}"
+@model demosite.Pages.Rooms.IndexModel
+
+@{
+    ViewData["Title"] = "Rooms";
+}
+
+<h2>Rooms</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <!--
+        <tr>
+            <th>Room name</th>
+            <th>Floor</th>
+            <th>Building</th>
+            <th>People</th>
+            <th></th>
+        </tr>
+            -->
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Room[0].RoomID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room[0].RoomName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room[0].Floor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room[0].Floor.Building)
+            </th>
+            <t></t>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Room)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoomName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor.FloorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor.Building.BuildingID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RoomID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RoomID"> Details </a> |
+                <a asp-page="./Delete" asp-route-id="@item.RoomID"> Delete </a>
+            </td>
+        @*
+        <!--
+
+
+        string selectedRow = "";
+        if(item.RoomID == Model.RoomID)
+        {
+            selectedRow = "success";
+        }
+            <tr class="@selectedRow">
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomName) display if match, add if none?
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Floor.FloorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Floor.Building.BName)
+                </td>
+                <td>
+                </td>
+                <td>
+              -->
+            *@
+        </tr>
+        }
+    </tbody>
+</table>
