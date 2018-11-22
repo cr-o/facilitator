@@ -27,7 +27,7 @@ namespace demosite.Pages.Rooms
                 .Include(r => r.Floor)
                 .Include(r => r.Floor.Building)
                 .AsNoTracking()
-                .OrderBy(r => r.RoomName)
+                //.OrderBy(r => r.RoomName)
                 .ToListAsync();
         }
     }

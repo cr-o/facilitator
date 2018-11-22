@@ -21,6 +21,7 @@ namespace demosite
                 try
                 {
                     var context = services.GetRequiredService<demositeContext>();
+                    //context.Database.EnsureCreated();
                     context.Database.Migrate();
                     SeedData.Initialize(services);
                 }

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace demosite.Models
 {
     public class Building
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BuildingID { get; set; }
         [Required]
         [RegularExpression(@"^[a-zA-Z ]+$")]

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace demosite.Migrations
 {
@@ -11,8 +10,7 @@ namespace demosite.Migrations
                 name: "Building",
                 columns: table => new
                 {
-                    BuildingID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    BuildingID = table.Column<int>(nullable: false),
                     BName = table.Column<string>(nullable: false),
                     BAddress = table.Column<string>(nullable: false)
                 },
@@ -22,27 +20,10 @@ namespace demosite.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Facility",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    People = table.Column<string>(nullable: false),
-                    Buildings = table.Column<string>(nullable: true),
-                    Floors = table.Column<string>(nullable: true),
-                    Rooms = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Facility", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Person",
                 columns: table => new
                 {
-                    PersonID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    PersonID = table.Column<int>(nullable: false),
                     Fname = table.Column<string>(nullable: false),
                     LName = table.Column<string>(nullable: false),
                     Username = table.Column<string>(nullable: true),
@@ -57,8 +38,7 @@ namespace demosite.Migrations
                 name: "Floor",
                 columns: table => new
                 {
-                    FloorID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FloorID = table.Column<int>(nullable: false),
                     FloorName = table.Column<string>(nullable: true),
                     BuildingID = table.Column<int>(nullable: false)
                 },
@@ -101,8 +81,7 @@ namespace demosite.Migrations
                 name: "Room",
                 columns: table => new
                 {
-                    RoomID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    RoomID = table.Column<int>(nullable: false),
                     RoomName = table.Column<string>(nullable: false),
                     FloorID = table.Column<int>(nullable: false)
                 },
@@ -135,9 +114,6 @@ namespace demosite.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Facility");
-
             migrationBuilder.DropTable(
                 name: "PersonsBuilding");
 

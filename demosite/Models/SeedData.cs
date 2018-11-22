@@ -8,10 +8,12 @@ namespace demosite.Models
 {
     public class SeedData
     {
+        //public static void Initialize(demositeContext context)
         public static void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new demositeContext(
-                serviceProvider.GetRequiredService<DbContextOptions<demositeContext>>()))
+            serviceProvider.GetRequiredService<DbContextOptions<demositeContext>>()))
+            //context.Database.EnsureCreated();
             {
                 if (context.Person.Any())
                 {
@@ -143,7 +145,17 @@ namespace demosite.Models
                         BuildingID = buildings.Single(b => b.BuildingID == 4).BuildingID,
                     }
                 };
-
+                foreach (PersonsBuilding pb in personsbuildings)
+                {
+                    var personsbuildingInDatabase = context.PersonsBuilding.Where(
+                        p =>
+                                p.Person.PersonID == pb.PersonID &&
+                                p.Building.BuildingID == pb.PersonID).SingleOrDefault();
+                    if (personsbuildingInDatabase == null) {
+                        context.PersonsBuilding.Add(pb);
+                    }
+                }
+                context.SaveChanges();
             }
         }
     }

@@ -9,7 +9,7 @@ using demosite.Models;
 namespace demosite.Migrations
 {
     [DbContext(typeof(demositeContext))]
-    [Migration("20181122013606_Initial")]
+    [Migration("20181122082648_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,9 +22,7 @@ namespace demosite.Migrations
 
             modelBuilder.Entity("demosite.Models.Building", b =>
                 {
-                    b.Property<int>("BuildingID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("BuildingID");
 
                     b.Property<string>("BAddress")
                         .IsRequired();
@@ -37,31 +35,9 @@ namespace demosite.Migrations
                     b.ToTable("Building");
                 });
 
-            modelBuilder.Entity("demosite.Models.Facility", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Buildings");
-
-                    b.Property<string>("Floors");
-
-                    b.Property<string>("People")
-                        .IsRequired();
-
-                    b.Property<string>("Rooms");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Facility");
-                });
-
             modelBuilder.Entity("demosite.Models.Floor", b =>
                 {
-                    b.Property<int>("FloorID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("FloorID");
 
                     b.Property<int>("BuildingID");
 
@@ -76,9 +52,7 @@ namespace demosite.Migrations
 
             modelBuilder.Entity("demosite.Models.Person", b =>
                 {
-                    b.Property<int>("PersonID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("PersonID");
 
                     b.Property<string>("Fname")
                         .IsRequired();
@@ -110,9 +84,7 @@ namespace demosite.Migrations
 
             modelBuilder.Entity("demosite.Models.Room", b =>
                 {
-                    b.Property<int>("RoomID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("RoomID");
 
                     b.Property<int>("FloorID");
 
