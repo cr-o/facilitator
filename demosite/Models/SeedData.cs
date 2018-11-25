@@ -52,19 +52,25 @@ namespace demosite.Models
                     {
                         Fname = "Jay",
                         LName = "Kay",
-                        PersonID = 1
+                        PersonID = 1,
+                        Username = "user",
+                        Password = "password"
                     },
                     new Person
                     {
                        Fname = "Bee",
                        LName = "Cee",
-                       PersonID = 2
+                       PersonID = 2,
+                       Username = "user2",
+                       Password = "password2"
                     },
                     new Person
                     {
                        Fname = "May",
                        LName = "Ray",
-                       PersonID = 3
+                       PersonID = 3,
+                       Username = "user3",
+                       Password = "password3"
                     }
                 };
                 foreach (Person p in people)

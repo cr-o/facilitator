@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using demosite.Models;
+using demosite.Models.FacilityViewModels;
 
 namespace demosite.Pages.Rooms
 {
@@ -20,7 +21,7 @@ namespace demosite.Pages.Rooms
 
         public Room Room { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int? id, int? personID)
         {
             if (id == null)
             {
@@ -28,7 +29,11 @@ namespace demosite.Pages.Rooms
             }
 
             Room = await _context.Room
-                .Include(r => r.Floor).FirstOrDefaultAsync(m => m.RoomID == id);
+                .Include(r => r.Floor)
+                .Include(r => r.Floor.Building)
+                .Include(r => r.Floor.Building.PersonsBuildings)
+                    .ThenInclude(r => r.Person)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
 
             if (Room == null)
             {

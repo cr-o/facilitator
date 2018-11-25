@@ -12,17 +12,54 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Room.RoomName)
+            @Html.DisplayNameFor(model => model.Room.RoomID)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Room.RoomName)
+            @Html.DisplayFor(model => model.Room.RoomID)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Room.Floor)
+            @Html.DisplayNameFor(model => model.Room.FloorID)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Room.Floor.FloorID)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Floor.BuildingID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Floor.BuildingID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Floor.Building.BName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Floor.Building.BName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Floor.Building.BAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Floor.Building.BAddress)
+        </dd>
+        <dt>
+            PersonID
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Room.Floor.Building.PersonsBuildings)
+        </dd>
+        <dt>
+            Person Name
+        </dt>
+        <dd>
+            @foreach (var item in Model.Room.Floor.Building.PersonsBuildings)
+            {
+                @Html.DisplayFor(modelItem => item.Person.Fname)
+                <text> </text>
+                @Html.DisplayFor(modelItem => item.Person.LName)
+
+            }
+        </dd>
+
     </dl>
 </div>
 <div>
