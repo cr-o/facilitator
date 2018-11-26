@@ -7,10 +7,10 @@ namespace demosite.Models.FacilityViewModels
 {
     public class RoomIndexData
     {
-        public IEnumerable<Room> Rooms { get; set; } 
-        public IEnumerable<Floor> Floors { get; set; }
-        public IEnumerable<Building> Buildings { get; set; }
-        public IEnumerable<Person> People { get; set; }
+        public List<Room> Rooms { get; set; } 
+        public List<Floor> Floors { get; set; }
+        public List<Building> Buildings { get; set; }
+        public List<Person> People { get; set; }
 
     }
 }

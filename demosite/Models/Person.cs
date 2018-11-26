@@ -19,7 +19,7 @@ namespace demosite.Models
         public string LName { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public ICollection<PersonsBuilding> PersonsBuildings { get; set; }
+        public IList<PersonsBuilding> PersonsBuildings { get; set; }
 
     }
 }

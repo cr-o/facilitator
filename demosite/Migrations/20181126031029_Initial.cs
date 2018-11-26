@@ -3,7 +3,7 @@
 namespace demosite.Migrations
 {
     public partial class Initial : Migration
-    { 
+    {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(

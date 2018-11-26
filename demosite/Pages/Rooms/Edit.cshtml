@@ -25,6 +25,31 @@
                 <span asp-validation-for="Room.FloorID" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Room.Floor.Building.BuildingID" class="control-label"></label>
+                <select asp-for="Room.Floor.Building.BuildingID" class="form-control" asp-items="ViewBag.BuildingID"></select>
+                <span asp-validation-for="Room.Floor.Building.BuildingID" class="text-danger"></span>
+            </div>
+          @foreach (var item in Model.Room.Floor.Building.PersonsBuildings)
+          {
+            <div class="form-group">
+                <label asp-for="@item.PersonID" class="control-label"></label>
+                <select asp-for="@item.PersonID" class="form-control" asp-items="@ViewBag.PersonID"></select>
+                <span asp-validation-for="@item.PersonID" class="text-danger"></span>
+            </div>
+          }
+            <!--
+    <div class="form-group">
+        <label asp-for="Room.Floor.Building.PersonsBuildings.Person.Fname" class="control-label"></label>
+        <select asp-for="Person.Fname" class="form-control" asp-items="ViewBag.Fname"></select>
+        <span asp-validation-for="Person.Fname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="Person.LName" class="control-label"></label>
+    <select asp-for="Person.LName" class="form-control" asp-items="ViewBag.LName"></select>
+    <span asp-validation-for="Person.LName" class="text-danger"></span>
+    </div>
+        -->
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </form>

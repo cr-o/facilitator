@@ -21,8 +21,10 @@ namespace demosite.Pages.Rooms
 
         [BindProperty]
         public Room Room { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public int RoomID { get; set; }
+        public Person Person { get; set; }
+        public int PersonID { get; set; }
+        public async Task<IActionResult> OnGetAsync(int? id, int personID)
         {
             if (id == null)
             {
@@ -30,23 +32,37 @@ namespace demosite.Pages.Rooms
             }
 
             Room = await _context.Room
-                .Include(r => r.Floor).FirstOrDefaultAsync(m => m.RoomID == id);
+                .Include(r => r.Floor)
+                .Include(r => r.Floor.Building)
+                .Include(r => r.Floor.Building.PersonsBuildings)
+                    .ThenInclude(r => r.Person)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
 
             if (Room == null)
             {
                 return NotFound();
             }
            ViewData["FloorID"] = new SelectList(_context.Floor, "FloorID", "FloorID");
+           ViewData["BuildingID"] = new SelectList(_context.Building, "BuildingID", "BuildingID");
+           ViewData["PersonID"] = new SelectList(_context.Person, "PersonID", "PersonID");
+
+        
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id, int personI)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
+            var roomToUpdate = await _context.Room
+                .Include(r => r.Floor)
+                .Include(r => r.Floor.Building)
+                .Include(r => r.Floor.Building.PersonsBuildings)
+                    .ThenInclude(r => r.Person)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
             _context.Attach(Room).State = EntityState.Modified;
 
             try
