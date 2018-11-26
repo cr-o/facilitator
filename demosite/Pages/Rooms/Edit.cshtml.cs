@@ -63,7 +63,7 @@ namespace demosite.Pages.Rooms
                 .Include(r => r.Floor.Building.PersonsBuildings)
                     .ThenInclude(r => r.Person)
                 .FirstOrDefaultAsync(m => m.RoomID == id);
-            _context.Attach(Room).State = EntityState.Modified;
+            _context.Attach(roomToUpdate).State = EntityState.Modified;
 
             try
             {

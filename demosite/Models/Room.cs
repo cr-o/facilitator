@@ -15,7 +15,6 @@ namespace demosite.Models
         public string RoomName { get; set; }
         [Required]
         public int FloorID { get; set; }
-        [Required]
         public Floor Floor { get; set; }    //1:n
     }
 }
