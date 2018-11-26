@@ -51,7 +51,6 @@ namespace demosite.Pages.Rooms
                 }
 
                 }
-            
             //_context.Room.Add(Room);
             //await _context.SaveChangesAsync();
             PopulateDropDownList(_context, emptyRoom.FloorID);

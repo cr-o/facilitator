@@ -20,22 +20,31 @@
                 <span asp-validation-for="Room.RoomName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Room.FloorID" class="control-label"></label>
-                <select asp-for="Room.FloorID" class="form-control" asp-items="ViewBag.FloorID"></select>
-                <span asp-validation-for="Room.FloorID" class="text-danger"></span>
+                <label asp-for="Room.Floor.FloorID" class="control-label"></label>
+                <select asp-for="Room.FloorID" class="form-control"
+                        asp-items="@Model.FloorIDSL">
+                    <option value="">-- Select FloorID --</option>
+                </select>
+                <span asp-validation-for="Room.FloorID" class="text-danger" />
             </div>
-            <div class="form-group">
-                <label asp-for="Room.Floor.Building.BuildingID" class="control-label"></label>
-                <select asp-for="Room.Floor.Building.BuildingID" class="form-control" asp-items="ViewBag.BuildingID"></select>
-                <span asp-validation-for="Room.Floor.Building.BuildingID" class="text-danger"></span>
-            </div>
+            <!--
+    <div class="form-group">
+        <label asp-for="Room.FloorID" class="control-label"></label>
+        <select asp-for="Room.FloorID" class="form-control" asp-items="ViewBag.FloorID"></select>
+        <span asp-validation-for="Room.FloorID" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Room.Floor.Building.BuildingID" class="control-label"></label>
+        <select asp-for="Room.Floor.Building.BuildingID" class="form-control" asp-items="ViewBag.BuildingID"></select>
+        <span asp-validation-for="Room.Floor.Building.BuildingID" class="text-danger"></span>
+    </div>
 
-            <div class="form-group">
-                <label asp-for="Room.Floor.Building.PersonsBuildings" class="control-label"></label>
-                <select asp-for="Room.Floor.Building.PersonsBuildings" class="form-control" asp-items="@ViewBag.PersonsBuildings"></select>
-                <span asp-validation-for="Room.Floor.Building.PersonsBuildings" class="text-danger"></span>
-            </div>
-
+    <div class="form-group">
+        <label asp-for="Room.Floor.Building.PersonsBuildings" class="control-label"></label>
+        <select asp-for="Room.Floor.Building.PersonsBuildings" class="form-control" asp-items="@ViewBag.PersonsBuildings"></select>
+        <span asp-validation-for="Room.Floor.Building.PersonsBuildings" class="text-danger"></span>
+    </div>
+        -->
             <!--
     <div class="form-group">
         <label asp-for="Room.Floor.Building.PersonsBuildings.Person.Fname" class="control-label"></label>
