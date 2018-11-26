@@ -23,20 +23,30 @@
             -->
         <tr>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RoomIDSort">
                 @Html.DisplayNameFor(model => model.Room[0].RoomID)
+                </a> 
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RoomNameSort">
                 @Html.DisplayNameFor(model => model.Room[0].RoomName)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Room[0].Floor)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.FloorNameSort">
+                @Html.DisplayNameFor(model => model.Room[0].Floor.FloorID)
+                </a>
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BNameSort">
                 @Html.DisplayNameFor(model => model.Room[0].Floor.Building.BName)
+                </a>
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BAddressSort">
                 @Html.DisplayNameFor(model => model.Room[0].Floor.Building.BAddress)
-            </th>
+                </a>
+</th>
             <t></t>
         </tr>
     </thead>
