@@ -32,7 +32,10 @@
                 @Html.DisplayNameFor(model => model.Room[0].Floor)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Room[0].Floor.Building)
+                @Html.DisplayNameFor(model => model.Room[0].Floor.Building.BName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room[0].Floor.Building.BAddress)
             </th>
             <t></t>
         </tr>
@@ -51,14 +54,17 @@
                 @Html.DisplayFor(modelItem => item.Floor.FloorName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Floor.Building.BuildingID)
+                @Html.DisplayFor(modelItem => item.Floor.Building.BName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Floor.Building.BAddress)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.RoomID">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.RoomID"> Details </a> |
                 <a asp-page="./Delete" asp-route-id="@item.RoomID"> Delete </a>
             </td>
-        @*
+            @*
         <!--
 
 

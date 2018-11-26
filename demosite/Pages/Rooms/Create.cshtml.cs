@@ -36,18 +36,22 @@ namespace demosite.Pages.Rooms
                 return Page();
             }
             var emptyRoom = new Room();
+            
+                if (await TryUpdateModelAsync<Room>(
+                    emptyRoom,
+                    "room",
+                    r => r.RoomID, r => r.FloorID, r => r.RoomName))
+                {
+                var existCount = _context.Room.Count(r => r.RoomID == Room.RoomID);
+                if (existCount == 0)
+                {
+                    _context.Room.Add(emptyRoom);
+                    await _context.SaveChangesAsync();
+                    return RedirectToPage("./Index");
+                }
 
-            if (await TryUpdateModelAsync<Room>(
-                emptyRoom,
-                "room",
-                r => r.RoomID, r => r.FloorID, r => r.RoomName))
-            {
-                _context.Room.Add(emptyRoom);
-                await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
-
-            }
-
+                }
+            
             //_context.Room.Add(Room);
             //await _context.SaveChangesAsync();
             PopulateDropDownList(_context, emptyRoom.FloorID);
