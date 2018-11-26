@@ -10,7 +10,7 @@ using demosite.Models;
 
 namespace demosite.Pages.Rooms
 {
-    public class EditModel : prepopulatebasePageModel
+    public class EditModel : PageModel
     {
         private readonly demosite.Models.demositeContext _context;
 
@@ -21,32 +21,32 @@ namespace demosite.Pages.Rooms
 
         [BindProperty]
         public Room Room { get; set; }
-        //public int RoomID { get; set; }
-        //public Person Person { get; set; }
-        //public int PersonID { get; set; }
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public int RoomID { get; set; }
+        public Person Person { get; set; }
+        public int PersonID { get; set; }
+        public async Task<IActionResult> OnGetAsync(int? id, int personID)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            
+
             Room = await _context.Room
                 .Include(r => r.Floor)
-                //.Include(r => r.Floor.Building)
-                //.Include(r => r.Floor.Building.PersonsBuildings)
-                //    .ThenInclude(r => r.Person)
+                .Include(r => r.Floor.Building)
+                .Include(r => r.Floor.Building.PersonsBuildings)
+                    .ThenInclude(r => r.Person)
                 .FirstOrDefaultAsync(m => m.RoomID == id);
-                
+
             if (Room == null)
             {
                 return NotFound();
             }
-            // ViewData["FloorID"] = new SelectList(_context.Floor, "FloorID", "FloorID");
-            //ViewData["BuildingID"] = new SelectList(_context.Building, "BuildingID", "BuildingID");
-            //ViewData["PersonID"] = new SelectList(_context.Person, "PersonID", "PersonID");
-            PopulateDropDownList(_context, Room.FloorID);
+           ViewData["FloorID"] = new SelectList(_context.Floor, "FloorID", "FloorID");
+           ViewData["BuildingID"] = new SelectList(_context.Building, "BuildingID", "BuildingID");
+           ViewData["PersonID"] = new SelectList(_context.Person, "PersonID", "PersonID");
 
+        
             return Page();
         }
 
@@ -57,53 +57,36 @@ namespace demosite.Pages.Rooms
                 return Page();
             }
 
-            var roomToUpdate = await _context.Room.FindAsync(id);
-            if (await TryUpdateModelAsync<Room>(
-                 roomToUpdate,
-                 "room",   // Prefix for form value.
-                   r => r.RoomID, r => r.FloorID, r => r.RoomName))
+            var roomToUpdate = await _context.Room
+                .Include(r => r.Floor)
+                .Include(r => r.Floor.Building)
+                .Include(r => r.Floor.Building.PersonsBuildings)
+                    .ThenInclude(r => r.Person)
+                .FirstOrDefaultAsync(m => m.RoomID == id);
+            _context.Attach(roomToUpdate).State = EntityState.Modified;
+
+            try
             {
                 await _context.SaveChangesAsync();
-                return RedirectToPage("./Index");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!RoomExists(Room.RoomID))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
+            return RedirectToPage("./Index");
+        }
 
-            PopulateDropDownList(_context, roomToUpdate.FloorID);
-            return Page();
+        private bool RoomExists(int id)
+        {
+            return _context.Room.Any(e => e.RoomID == id);
         }
     }
 }
-/*
-    .Include(r => r.Floor)
-    .Include(r => r.Floor.Building)
-    .Include(r => r.Floor.Building.PersonsBuildings)
-        .ThenInclude(r => r.Person)
-    .FirstOrDefaultAsync(m => m.RoomID == id);
-_context.Attach(roomToUpdate).State = EntityState.Modified;
-
-try
-{
-    await _context.SaveChangesAsync();
-}
-catch (DbUpdateConcurrencyException)
-{
-    if (!RoomExists(Room.RoomID))
-    {
-        return NotFound();
-    }
-    else
-    {
-        throw;
-    }
-}
-
-return RedirectToPage("./Index");
-}
-
-private bool RoomExists(int id)
-{
-return _context.Room.Any(e => e.RoomID == id);
-}
-}
-}
-*/
