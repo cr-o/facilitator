@@ -17,8 +17,6 @@ namespace demosite.Models
         [RegularExpression(@"^[a-zA-Z ]+$")]
         [Required]
         public string LName { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
         public IList<PersonsBuilding> PersonsBuildings { get; set; }
 
     }

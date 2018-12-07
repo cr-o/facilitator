@@ -75,15 +75,6 @@ namespace demosite.Pages.Rooms
                 .Include(r => r.Floor.Building)
                 .Include(r => r.Floor.Building.PersonsBuildings)
                 .ToListAsync();
-            /*
-            Room = await _context.Room
-                .Include(r => r.Floor)
-                .Include(r => r.Floor.Building)
-                .Include(r => r.Floor.Building.PersonsBuildings)
-                .AsNoTracking()
-                //.OrderBy(r => r.RoomName)
-                .ToListAsync();
-                */
         }
     }
 }

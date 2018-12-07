@@ -13,7 +13,6 @@ namespace demosite.Models
         {
         }
         
-        //public DbSet<demosite.Models.Facility> Facility { get; set; }
         public DbSet<demosite.Models.Person> Person { get; set; }
         public DbSet<demosite.Models.Building> Building { get; set; }
         public DbSet<demosite.Models.Floor> Floor { get; set; }
